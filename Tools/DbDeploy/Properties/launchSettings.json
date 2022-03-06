@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DbDeploy": {
+      "commandName": "Project",
+      "commandLineArgs": "migrate \"E:\\Projects\\finalyst\\Finalyst.DB\\Dbo\" \"Data Source=localhost;Initial Catalog=finalyst;Persist Security Info=True;User ID=sa;Password=Super_Secret_Pw1234\""
+    }
+  }
+}

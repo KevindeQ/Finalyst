@@ -1,0 +1,25 @@
+version: '3.4'
+
+volumes:
+  finalyst_data:
+    name: finalyst_data
+
+services:
+  finalyst.db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    user: root
+    ports:
+      - 1433:1433
+    volumes:
+      - finalyst_data:/var/opt/mssql/data
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "${SQL_SERVER_ROOT_PASSWORD}"
+  
+  finalyst.api:
+    image: ${DOCKER_REGISTRY-}finalystapi
+    build:
+      context: .
+      dockerfile: Finalyst.API/Dockerfile
+    depends_on:
+      - finalyst.db
